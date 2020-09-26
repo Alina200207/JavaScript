@@ -1,0 +1,9 @@
+{
+  "name": "entropia",
+  "version": "0.0.0",
+  "description": "Entropia",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  }
+}
