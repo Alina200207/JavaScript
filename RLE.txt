@@ -57,9 +57,3 @@ fs.writeFileSync('decode.txt', resStrDe);
 code (inText);
 
 decode (inText1);
-
-
-256
-decode
-
-errors
