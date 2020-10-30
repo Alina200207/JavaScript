@@ -24,5 +24,3 @@ for (let i in alph) {
 }
 h = h * (-1);
 console.log(h);
-decode
-error
