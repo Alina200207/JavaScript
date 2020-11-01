@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>hemmeing code</title>
+<script>
+function code(){
+let mes = document.getElementById('inpMessage').value;
+mes = mes.split('');
+for(let i = 0; i < mes.length; i++)
+   mes[i] *= 1;
+let control = new Array();
+control.push((mes[0] + mes[1] + mes[3])%2);
+control.push((mes[1] + mes[2] + mes[3])%2);
+control.push((mes[0] + mes[2] + mes[3])%2);
+document.getElementById('codedMessage').value = mes.join('') + control.join('');
+}
+function decode(){
+let message = document.getElementById('codedMessage').value;
+message = message.split('');
+let string = '';
+for(let i = 0; i < message.length; i++)
+   message[i] *= 1;
+if ((message[4]!=((message[0] + message[1] + message[3])%2))&&(message[5]==((message[1] + message[2] + message[3])%2))&&(message[6]==((message[0] + message[2] + message[3])%2))){
+    message[4]=(message[4]+1)%2;
+	string = message[0].toString()+message[1].toString()+message[2].toString()+message[3].toString();
+	document.getElementById('decodedMessage').value = string;
+	document.getElementById('placeOfError').textContent = 'The element in the fifth place contains an error';
+}
+else if ((message[4]==((message[0] + message[1] + message[3])%2))&&(message[5]!=((message[1] + message[2] + message[3])%2))&&(message[6]==((message[0] + message[2] + message[3])%2))){
+    message[5]=(message[5]+1)%2;
+	string = message[0].toString()+message[1].toString()+message[2].toString()+message[3].toString();
+	document.getElementById('decodedMessage').value = string;
+	document.getElementById('placeOfError').textContent = 'The element in the sixth place contains an error';
+}
+else if ((message[4]==((message[0] + message[1] + message[3])%2))&&(message[5]==((message[1] + message[2] + message[3])%2))&&(message[6]!=((message[0] + message[2] + message[3])%2))){
+    message[6]=(message[6]+1)%2;
+	string = message[0].toString()+message[1].toString()+message[2].toString()+message[3].toString();
+	document.getElementById('decodedMessage').value = string;
+	document.getElementById('placeOfError').textContent = 'The element in the seventh place contains an error';
+}
+else if ((message[4]!=((message[0] + message[1] + message[3])%2))&&(message[5]!=((message[1] + message[2] + message[3])%2))&&(message[6]==((message[0] + message[2] + message[3])%2))){
+    message[1]=(message[1]+1)%2;
+	string = message[0].toString()+message[1].toString()+message[2].toString()+message[3].toString();
+	document.getElementById('decodedMessage').value = string;
+	document.getElementById('placeOfError').textContent = 'The element in the second place contains an error';
+}
+else if ((message[4]!=((message[0] + message[1] + message[3])%2))&&(message[5]==((message[1] + message[2] + message[3])%2))&&(message[6]!=((message[0] + message[2] + message[3])%2))){
+    message[0]=(message[0]+1)%2;
+	string = message[0].toString()+message[1].toString()+message[2].toString()+message[3].toString();
+	document.getElementById('decodedMessage').value = string;
+	document.getElementById('placeOfError').textContent = 'The element in the first place contains an error';
+}
+else if ((message[4]==((message[0] + message[1] + message[3])%2))&&(message[5]!=((message[1] + message[2] + message[3])%2))&&(message[6]!=((message[0] + message[2] + message[3])%2))){
+    message[2]=(message[2]+1)%2;
+	string = message[0].toString()+message[1].toString()+message[2].toString()+message[3].toString();
+	document.getElementById('decodedMessage').value = string;
+	document.getElementById('placeOfError').textContent = 'The element in the third place contains an error';
+}
+else if ((message[4]!=((message[0] + message[1] + message[3])%2))&&(message[5]!=((message[1] + message[2] + message[3])%2))&&(message[6]!=((message[0] + message[2] + message[3])%2))){
+    message[3]=(message[3]+1)%2;
+	string = message[0].toString()+message[1].toString()+message[2].toString()+message[3].toString();
+	document.getElementById('decodedMessage').value = string;
+	document.getElementById('placeOfError').textContent = 'The element in the fourth place contains an error';
+}
+else{
+string = message[0].toString()+message[1].toString()+message[2].toString()+message[3].toString();
+document.getElementById('decodedMessage').value = string;
+document.getElementById('placeOfError').textContent = 'Error free';
+}
+}
+</script>
+</head>
+<body>
+<h1>Hemming code</h1>
+<p> <input type='text' id='inpMessage' maxlength=4> Type the message </p>
+<p> <input type='button' value='Code' onClick='code()'> </p>
+<p> <input type='text' id='codedMessage'> Coded message </p>
+<p> <input type='button' value='Decode' onClick='decode()'> </p>
+<p> <input type='text' id='decodedMessage' maxlength=4> Decoded message </p>
+<p> <span id='placeOfError'> </span> </p>
+</body>
+</html>
