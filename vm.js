@@ -20,37 +20,37 @@ while(flag)
 		mem[mem[ip+1]]=parseFloat(mem[ip+2]);
 		ip+=3;
 		break;
-    case 'input':
-        mem[mem[ip+1]]=parseInt(readLine.question("Enter a number"));
-        ip+=2;
-        break;		
+        case 'input':
+                mem[mem[ip+1]]=parseInt(readLine.question("Enter a number"));
+                ip+=2;
+                break;		
 	case 'output':
 		console.log(mem[mem[ip+1]]);
 		ip+=2;
-	    break;
+	        break;
 	case 'add':
 		mem[mem[ip+3]]=mem[mem[ip+1]]+mem[mem[ip+2]];
 		ip+=4;
-	    break;
+	        break;
 	case 'multip':
-        mem[mem[ip+3]]=mem[mem[ip+1]]*mem[mem[ip+2]];
-        ip+=4;
+                mem[mem[ip+3]]=mem[mem[ip+1]]*mem[mem[ip+2]];
+                ip+=4;
 		break;
-    case 'fact':
-	    arg1 = mem[mem[ip+1]];
-	    let count = 1;
-        for (let i = 2; i<mem[mem[ip+1]]+1;i++)
+        case 'fact':
+	        arg1 = mem[mem[ip+1]];
+	        let count = 1;
+                for (let i = 2; i<mem[mem[ip+1]]+1;i++)
 			count*=i;
 		mem[mem[ip+2]]=count;
-        ip+=3;
+                ip+=3;
 		break;
 	case 'cubeOfNumber':
-	    arg2 = mem[mem[ip+1]];
-	    mem[mem[ip+2]]=mem[mem[ip+1]]*mem[mem[ip+1]]*mem[mem[ip+1]];
+	        arg2 = mem[mem[ip+1]];
+	        mem[mem[ip+2]]=mem[mem[ip+1]]*mem[mem[ip+1]]*mem[mem[ip+1]];
 		ip+=3;
 		break;
 	case 'compare':
-	    if (parseInt(mem[mem[ip+1]]) < parseInt(mem[mem[ip+2]])) 
+	        if (parseInt(mem[mem[ip+1]]) < parseInt(mem[mem[ip+2]])) 
 			mem[mem[ip+3]]=`cube ${arg2} of a number more than factorial ${arg1}`;
 		else mem[mem[ip+3]]=`factorial ${arg1} more than cube of a number ${arg2}`;
 		ip+=4;
