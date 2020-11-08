@@ -1,0 +1,1 @@
+input 25 input 26 add 25 26 27 multip 25 26 28 fact 25 29 output 31 cubeOfNumber 26 30 compare 29 30 31 exit
