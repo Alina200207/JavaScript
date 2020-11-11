@@ -1,0 +1,1 @@
+input 24 set 25 1 set 26 1 set 27 1 multip 26 27 27 add 26 25 26 for 24 output 27 exit
