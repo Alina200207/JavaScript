@@ -25,7 +25,6 @@ for (let i in alph){
 	tree.push (newNode);
 	countLetter+=1;
 }
-console.log(tree);
 //создаем дополнительные узлы
 for (let i=0; i < countLetter - 1; i++){
 	for (let j=i+1; j < countLetter; j++){
