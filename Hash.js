@@ -3,7 +3,7 @@ let string = fs.readFileSync('input.txt');
 let substring = fs.readFileSync('inputStr.txt');
 string = string.toString();
 substring = substring.toString();
-//алгоритм BrootForse
+//алгоритм Brute Force
 let entries2 = new Array();
 let count2  = 0;
 for (let i = 0; i < string.length-substring.length; i++)
