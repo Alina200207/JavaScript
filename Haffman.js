@@ -78,6 +78,7 @@ if (countLetter==2){
 	    console.log(tree[0].letter, '-', tree[0].code);
 	}
 }
+//в алфавите букв больше,чем две
 if (countLetter>2){
 let numberBig = inText.length;
 let numberSmall = inText.length;
@@ -99,6 +100,7 @@ for (let i = tree.length-1; i > countLetter-1; i--){
 	numberSmall=inText.length;
 	
 }
+//выводим коды букв
 for (let i = 0; i < countLetter;i++)
     console.log(tree[i].letter, '-', tree[i].code);	
 }
