@@ -6,7 +6,7 @@ substring = substring.toString();
 let entries = new Array();
 let alph = new Array();
 let lettersAlph = new Array();
-//алфавит строки substring
+//алфавит подстроки
 for (let i =0; i<=substring.length; i++)
 {
 	alph[substring.charAt(i)]=0;
