@@ -17,8 +17,7 @@ function postinfix (expression){
 	operations.push(new Znach('*', 2));
 	operations.push(new Znach('/', 2));
 	operations.push(new Znach('^', 3));
-	stack.push(new Znach ('.', 0));
-	//переводим выражение в польскую запись
+	//переводим выражение в постинфиксную запись
 	let znak = '';
 	let newopera;
 	for (let i = 0; i < expression.length; i++) {
@@ -62,7 +61,6 @@ function postinfix (expression){
 			}
 		}
 	}
-	stack.shift();
 	for (let i = stack.length-1; i>=0;i--)
 		outputstr.push(stack[i].operation);
 	return outputstr;
