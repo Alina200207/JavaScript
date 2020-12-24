@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="myCanvas" width="400" height="400"
+style="border:1px solid #c3c3c3;">
+</canvas>
+
+<input type='button' value='Step' onclick = 'life()'>
+<input type='button' value='Clean' onclick = 'clean()'>
+
+<script>
+
+
+var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
+ctx.fillStyle = "#FF0000";
+
+canvas.onclick = function(event){
+	let x = event.offsetX;
+	let y = event.offsetY;
+	x= Math.floor(x/40);
+	y= Math.floor(y/40);
+	field[x][y]=1;
+	draw();
+}
+
+let fieldSize = 10;
+let cellSize = 40;
+let field = new Array (fieldSize);
+
+
+function create(){
+	for (let i = 0; i<fieldSize; i++){
+		field[i]=new Array (fieldSize);
+		for (let j = 0; j < fieldSize; j++)
+			field[i][j]=0;
+	}
+}
+create();
+
+function draw()
+{
+	ctx.clearRect(0, 0, 400, 400);
+	for (let i = 0; i < fieldSize; i++)
+	{
+		for (let j = 0; j < fieldSize; j++)
+		{
+			if (field[i][j]==1)
+			{
+				ctx.fillStyle = "#00FF00";
+				ctx.fillRect(i*cellSize, j*cellSize, cellSize, cellSize);
+			}
+		}
+	}
+}
+
+function life(){
+	let nextField = new Array (fieldSize);
+	for (let i = 0; i < fieldSize; i++)
+	{
+		nextField[i]=new Array();
+		for (let j = 0; j < fieldSize; j++)
+		{
+			let neighbors = 0;
+			if (field[checkSize1(i)-1][j]==1)
+				neighbors++;
+			if (field[i][checkSize2(j)+1]==1)
+				neighbors++;
+			if (field[checkSize2(i)+1][j]==1)
+				neighbors++;
+			if (field[i][checkSize1(j)-1]==1)
+				neighbors++;
+			if (field[checkSize1(i)-1][checkSize1(j)-1]==1)
+				neighbors++;
+			if (field[checkSize2(i)+1][checkSize1(j)-1]==1)
+				neighbors++;
+			if (field[checkSize1(i)-1][checkSize2(j)+1]==1)
+				neighbors++;
+			if (field[checkSize2(i)+1][checkSize2(j)+1]==1)
+				neighbors++;
+			if ((neighbors<2 || neighbors>3)&&field[i][j]==1)
+				nextField[i][j]=0;
+			if ((neighbors==2 || neighbors==3)&&field[i][j]==1)
+				nextField[i][j]=1;
+			if (neighbors==3)
+				nextField[i][j]=1;
+		}
+	}
+	field = nextField;
+	draw();
+}
+
+function checkSize1(i){
+	if (i==0) return fieldSize;
+	else return i;
+}
+function checkSize2(i){
+	if (i==fieldSize-1) return -1;
+	else return i;
+}
+
+function clean(){
+	for (let i = 0; i <fieldSize; i++)
+		for (let j = 0; j < fieldSize; j++)
+			field[i][j]=0;
+	draw();
+}
+
+</script>
+</body>
